@@ -1,0 +1,16 @@
+{
+  "name": "mpsbr",
+  "version": "1.0.0",
+  "description": "Gestor de serviços REST",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Eber Rodrigues",
+  "license": "Unlicense",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "jest": "^27.1.0",
+    "oas3-tools": "^2.2.3"
+  }
+}

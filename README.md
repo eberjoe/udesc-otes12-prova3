@@ -6,10 +6,11 @@
 
 ## Arquitetura e recursos
 
-A arquitetura de microsserviços foi utilizada para a gestão dos serviços propostos. Estes serviços estão documentados segundo a [especificação **OpenAPI 3**](https://swagger.io/specification/) para serviços **REST**, e são acessíveis através da [interface gráfica do **Swagger**](https://swagger.io/tools/swagger-ui/).
+A arquitetura de microsserviços foi utilizada para a gestão dos serviços propostos. Estes serviços estão documentados segundo a [especificação **OpenAPI 3**](https://swagger.io/specification/) para **REST**, e são acessíveis através da [interface gráfica do **Swagger**](https://swagger.io/tools/swagger-ui/).
 
 ## Tecnologias empregadas
 
+A aplicação de cada tecnologia é detalhada no vídeo enviado no contexto da avaliação.
 ### [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 
 Linguagem de programação interpretada, utilizada no projeto.
@@ -25,6 +26,10 @@ Biblioteca para requisições HTTP a partir do navegador ou de Node.js.
 ### [oas3-tools](https://www.npmjs.com/package/oas3-tools)
 
 Biblioteca que fornece suporte a OpenAPI 3 para Node.js.
+
+### [Jest](https://jestjs.io/pt-BR/)
+
+*Framework* para testes em JavaScript.
 
 ## Escala utilizada para caracterização do resultado esperado do processo
 
@@ -45,5 +50,3 @@ Execute os seguintes passos:
 1. Abra um terminal em `mpsbr`.
 
 2. Execute o comando `npm install`.
-
-![\Large {\color{White} x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)

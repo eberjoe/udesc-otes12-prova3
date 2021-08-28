@@ -1,0 +1,145 @@
+openapi: 3.0.1
+info:
+  title: "MPS.BR: Capacidade de Processos de Projeto no Nível G"
+  description: "Foi utilizada uma escala composta das notas Excelente, Bom, Regular, Insuficiente e Ausente para a mensuração das evidências.\n"
+  version: 1.0.0
+externalDocs:
+  description: Guia de avaliação MPS.BR
+  url: https://www.softex.br/wp-content/uploads/2013/07/MPS.BR_Guia_de-Avaliacao_2013.pdf
+servers:
+- url: http://localhost:8000
+tags:
+- name: Nível G
+  description: Avaliação 3 da disciplina OTES-12
+paths:
+  /mpsbr-g:
+    post:
+      tags:
+      - Nível G
+      summary: Capacidade de Processos de Projeto
+      operationId: nivelg
+      requestBody:
+        description: Variáveis
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/G'
+        required: true
+      responses:
+        "200":
+          description: Capacidade calculada
+          content:
+            application/json:
+              schema:
+                type: object
+                x-content-type: application/json
+        "400":
+          description: Não foi possível calcular a capacidade
+          content: {}
+      x-codegen-request-body-name: input
+      x-swagger-router-controller: nivel-g
+components:
+  schemas:
+    Nota:
+      type: string
+      enum:
+      - Excelente
+      - Bom
+      - Regular
+      - Insuficiente
+      - Ausente
+    G:
+      required:
+      - gpr1
+      - gpr5
+      - gpr6
+      - gpr8
+      - gpr9
+      - gpr11
+      - req1
+      - req5
+      - req6
+      - req7
+      - c
+      - d
+      - e
+      - fa
+      - fc
+      - fd
+      - mt
+      - p
+      - ameaca
+      - seguranca
+      type: object
+      properties:
+        gpr1:
+          $ref: '#/components/schemas/Nota'
+        gpr5:
+          $ref: '#/components/schemas/Nota'
+        gpr6:
+          $ref: '#/components/schemas/Nota'
+        gpr8:
+          $ref: '#/components/schemas/Nota'
+        gpr9:
+          $ref: '#/components/schemas/Nota'
+        gpr11:
+          $ref: '#/components/schemas/Nota'
+        req1:
+          $ref: '#/components/schemas/Nota'
+        req5:
+          $ref: '#/components/schemas/Nota'
+        req6:
+          $ref: '#/components/schemas/Nota'
+        req7:
+          $ref: '#/components/schemas/Nota'
+        mt:
+          type: integer
+          format: int32
+        fa:
+          type: integer
+          format: int32
+        fc:
+          type: integer
+          format: int32
+        fd:
+          type: integer
+          format: int32
+        ameaca:
+          type: number
+          format: float
+        seguranca:
+          type: number
+          format: float
+        e:
+          type: integer
+          format: int32
+        d:
+          type: integer
+          format: int32
+        p:
+          type: number
+          format: float
+        c:
+          type: number
+          format: float
+      example:
+        req1: "Excelente"
+        req5: "Excelente"
+        req6: "Excelente"
+        req7: "Regular"
+        gpr1: "Bom"
+        gpr5: "Bom"
+        gpr6: "Insuficiente"
+        gpr8: "Excelente"
+        gpr9: "Ausente"
+        gpr11: "Excelente"
+        mt: 10
+        fa: 2
+        fc: 2
+        fd: 2
+        p: 0.82
+        c: 100000
+        e: 1
+        d: 0
+        ameaca: 0.25
+        seguranca: 0.95
