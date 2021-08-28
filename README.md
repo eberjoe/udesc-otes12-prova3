@@ -28,13 +28,12 @@ Biblioteca que fornece suporte a OpenAPI 3 para Node.js.
 
 ## Escala utilizada para caracterização do resultado esperado do processo
 
-|-|-|
 |Grau de implementação|Caracterização|
 |-|-|
 |Excelente|O indicador direto está presente, é julgado adequado e não possui pontos fracos|
 |Bom|O indicador direto está presente e é julgado adequado, porém possui pontos fracos|
-|Regular|O indicador direto não está presente ou é julgado inadequado|
-|Insuficiente|O indicador direto é julgado inadequado|
+|Regular|O indicador direto está presente mas é julgado inadequado|
+|Insuficiente|O indicador direto está parcialmente presente|
 |Ausente|O indicador direto não está presente|
 
 ## Requisitos e utilização
@@ -47,4 +46,4 @@ Execute os seguintes passos:
 
 2. Execute o comando `npm install`.
 
-![\Large \color{Blue} x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
+![\Large {\color{Blue} x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
