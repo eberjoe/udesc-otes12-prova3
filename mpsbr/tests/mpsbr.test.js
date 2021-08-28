@@ -1,6 +1,6 @@
 const {nivelg} = require('../services/nivel-g');
 
-describe('Teste do serviço principal', () => {
+describe('Testando serviço principal', () => {
     test('Caracterização da capacidade', () => {
       
         const result = nivelg({
@@ -26,7 +26,7 @@ describe('Teste do serviço principal', () => {
           req7: 'Bom'
         });
 
-        expect(result).resolves.toBe({
+        expect(result).resolves.toStrictEqual({
           re: 0,
           smi: 0,
           integridade: 1,

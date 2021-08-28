@@ -6,7 +6,9 @@
 
 ## Arquitetura e recursos
 
-A arquitetura de microsserviços foi utilizada para a gestão dos serviços propostos. Estes serviços estão documentados segundo a [especificação **OpenAPI 3**](https://swagger.io/specification/) para **REST**, e são acessíveis através da [interface gráfica do **Swagger**](https://swagger.io/tools/swagger-ui/).
+A arquitetura de microsserviços RESTful foi utilizada para a gestão dos serviços propostos. Estes serviços estão documentados segundo a [especificação **OpenAPI 3**](https://swagger.io/specification/), e são acessíveis através da [interface gráfica do **Swagger**](https://swagger.io/tools/swagger-ui/).
+
+O serviço principal `mpsbr` , que roda na porta `8000`, utiliza os serviços `metricas` e `indicadores`, que rodam nas portas `8001` e `8002`, respectivamente, para determinar a capacidade de processos.
 
 ## Tecnologias empregadas
 
@@ -47,6 +49,10 @@ Para a utilização dos serviços é necessário que os mesmos sejam executados 
 
 Execute os seguintes passos:
 
-1. Abra um terminal em `mpsbr`.
+1. Abra um terminal em `/mpsbr`.
 
 2. Execute o comando `npm install`.
+
+3. Abra um terminal em `/metricas`.
+
+4. Execute o comando `npm install`.

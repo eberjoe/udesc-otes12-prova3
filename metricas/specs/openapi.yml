@@ -1,0 +1,234 @@
+openapi: 3.0.1
+info:
+  title: Métricas
+  description: "A medição nos permite obter o entendimento do processo e projeto,\
+    \ dando-nos um mecanismo para uma avaliação objetiva. Elas podem ser aplicadas\
+    \ ao processo de software com a intenção de melhoria continuae e são sadas para\
+    \ ajudar nas estimativas, controle de qualidade, produtividade e controle de projeto."
+  version: 1.0.0
+servers:
+- url: http://localhost:8001/metricas/v1
+tags:
+- name: Métricas
+  description: Avaliação 3
+paths:
+  /smi:
+    post:
+      tags:
+      - Métricas
+      summary: Índice de Maturidade de Software
+      description: |-
+        O `SMI` ou Índice de Maturidade de Software é cálculado por meio de:
+
+         • `Mt` = número de módulos da versão atual
+         • `Fa` = número de módulos da versão atual que foram acrescentados
+         • `Fc` = número de módulos da versão atual foram alterados
+         • `Fd` = número de módulos da versão anterior que foram excluídos na versão atual
+      operationId: smi
+      requestBody:
+        description: Variáveis
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMI'
+        required: true
+      responses:
+        "200":
+          description: SMI calculado
+          content:
+            application/json:
+              schema:
+                type: number
+                format: float
+                x-content-type: application/json
+        "400":
+          description: Variáveis inválidas
+          content: {}
+      x-codegen-request-body-name: avaliacao
+      x-swagger-router-controller: Mtricas
+  /integridade:
+    post:
+      tags:
+      - Métricas
+      summary: Integridade
+      description: |
+        A `integridade` mede a habilidade de um sistema em resistir aos ataques (acidentais-intencionais) à sua segurança. É calculada por meio de dois atributos:
+         • `Ameaça` = probabilidade de que um ataque especifico ocorrer em um dado intervalo de tempo
+         • `Segurança` = probabilidade de que um ataque especifico será repelido
+      operationId: integridade
+      requestBody:
+        description: Variáveis
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Integridade'
+        required: true
+      responses:
+        "200":
+          description: Integridade calculada
+          content:
+            application/json:
+              schema:
+                type: number
+                format: float
+                x-content-type: application/json
+        "400":
+          description: Variáveis inválidas
+          content: {}
+      x-codegen-request-body-name: avaliacao
+      x-swagger-router-controller: Mtricas
+  /dre:
+    post:
+      tags:
+      - Métricas
+      summary: Eficiência na Remoção de Defeitos
+      description: "O `DRE` ou Eficiência na remoção de defeitos é a medida da habilidade\
+        \ de filtragem das ações de garantia de qualidade e controle quando elas sã\
+        o aplicadas através de todas as atividades da estrutura de processo. Considerando\
+        \ um projeto, é calculado por meio de:\n• `E` = é o numero de `erros` encontrados\
+        \ antes que o software seja fornecido ao usuário\n • `D` = é o numero de `defeitos`\
+        \ depois que o software foi entregue\n"
+      operationId: dre
+      requestBody:
+        description: Variáveis
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DRE'
+        required: true
+      responses:
+        "200":
+          description: DRE calculado
+          content:
+            application/json:
+              schema:
+                type: number
+                format: float
+                x-content-type: application/json
+        "400":
+          description: Variáveis inválidas
+          content: {}
+      x-codegen-request-body-name: avaliacao
+      x-swagger-router-controller: Mtricas
+  /re:
+    post:
+      tags:
+      - Métricas
+      summary: Exposição Geral ao Risco
+      description: "A `exposição geral ao risco` (risk exposure – RE) é determinada\
+        \ por meio de:\n• `P` = probabilidade de ocorrência de um risco\n• `C` = custo\
+        \ para o projeto, caso o risco ocorra\n"
+      operationId: re
+      requestBody:
+        description: Variáveis
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RE'
+        required: true
+      responses:
+        "200":
+          description: RE calculado
+          content:
+            application/json:
+              schema:
+                type: number
+                format: float
+                x-content-type: application/json
+        "400":
+          description: Variáveis inválidas
+          content: {}
+      x-codegen-request-body-name: avaliacao
+      x-swagger-router-controller: Mtricas
+components:
+  schemas:
+    SMI:
+      required:
+      - fa
+      - fc
+      - fd
+      - mt
+      type: object
+      properties:
+        mt:
+          type: integer
+          format: int32
+        fa:
+          type: integer
+          format: int32
+        fc:
+          type: integer
+          format: int32
+        fd:
+          type: integer
+          format: int32
+      example:
+        mt: 10
+        fa: 2
+        fc: 2
+        fd: 2
+      description: |-
+        O `SMI` ou Índice de Maturidade de Software é cálculado por meio de:
+
+         • `Mt` = número de módulos da versão atual
+         • `Fa` = número de módulos da versão atual que foram acrescentados
+         • `Fc` = número de módulos da versão atual foram alterados
+         • `Fd` = número de módulos da versão anterior que foram excluídos na versão atual
+    Integridade:
+      required:
+      - ameaca
+      - seguranca
+      type: object
+      properties:
+        ameaca:
+          type: number
+          format: float
+        seguranca:
+          type: number
+          format: float
+      example:
+        ameaca: 0.25
+        seguranca: 0.95
+      description: |
+        A `integridade` mede a habilidade de um sistema em resistir aos ataques (acidentais-intencionais) à sua segurança. É calculada por meio de dois atributos:
+         • `Ameaça` = probabilidade de que um ataque especifico ocorrer em um dado intervalo de tempo
+         • `Segurança` = probabilidade de que um ataque especifico será repelido
+    DRE:
+      required:
+      - d
+      - e
+      type: object
+      properties:
+        e:
+          type: integer
+          format: int32
+        d:
+          type: integer
+          format: int32
+      example:
+        e: 1
+        d: 0
+      description: "O `DRE` ou Eficiência na remoção de defeitos é a medida da habilidade\
+        \ de filtragem das ações de garantia de qualidade e controle quando elas sã\
+        o aplicadas através de todas as atividades da estrutura de processo. Considerando\
+        \ um projeto, é calculado por meio de:\n• `E` = é o numero de `erros` encontrados\
+        \ antes que o software seja fornecido ao usuário\n • `D` = é o numero de `defeitos`\
+        \ depois que o software foi entregue\n DRE = 1 significa nenhum defeito encontrado no software"
+    RE:
+      required:
+      - c
+      - p
+      type: object
+      properties:
+        p:
+          type: number
+          format: float
+        c:
+          type: number
+          format: float
+      example:
+        p: 0.8
+        c: 25000    
+      description: "A `exposição geral ao risco` (risk exposure – RE) é determinada\
+        \ por meio de:\n• `P` = probabilidade de ocorrência de um risco\n• `C` = custo\
+        \ para o projeto, caso o risco ocorra\n"
