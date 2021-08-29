@@ -49,11 +49,42 @@ Biblioteca que fornece suporte a OpenAPI 3 para Node.js.
 
 |GPR|REQ|O processo produz resultados definidos|A execução do processo é planejada e monitorada|As pessoas estão preparadas para executar suas responsabilidades no processo|
 |-|-|-|-|-|
-|menor que Regular (<2)|menor que regular (<2)|Não|Não|Não|
-|menor que Regular (<2)|Regular ou melhor (>=2)|Sim|Não|Não|
-|Regular ou melhor (>=2)|menor que Regular (<2)|Não|Sim|Não|
-|Regular ou melhor (>=2)|Regular ou melhor (>=2)|Sim|Sim|Sim|
+|Média menor que Regular (<2)|Média menor que Regular (<2)|Não|Não|Não|
+|Média menor que Regular (<2)|Média Regular ou melhor (>=2)|Sim|Não|Não|
+|Média Regular ou melhor (>=2)|Média menor que Regular (<2)|Não|Sim|Não|
+|Média Regular ou melhor (>=2)|Média Regular ou melhor (>=2)|Sim|Sim|Sim|
 
+## Microsserviços
+
+### `/mpsbr-g`
+
+Este microsserviço é executado na porta `8000` e depende do microsserviço `/indicadores` para determinar a capacidade.
+
+### `/indicadores`
+
+Este microsserviço roda na porta `8002` e recebe as entradas referentes aos indicadores de **Gerência de Projetos** e de **Engenharia de Requisitos**, para retornar as médias deles.
+
+### `/metricas`
+
+Este microserviço possui os *endpoints* necessários para calcular as seguintes métricas:
+
+#### Integridade
+
+![integridade](README-img/integridade.png)
+
+#### Eficiência na Remoção de Defeitos
+
+![DRE](README-img/dre.png)
+
+#### Exposição ao Risco
+
+![RE](README-img/re.png)
+
+#### Índice de Maturidade de Software
+
+![SMI](README-img/smi.png)
+
+Maiores detalhes sobre as fórmulas não fornecidos na especificação da API.
 ## Requisitos e utilização
 
 Para a utilização dos serviços é necessário que os mesmos sejam executados localmente e, portanto, que a máquina tenha instalado o **Node.js** na versão 14.

@@ -4,16 +4,6 @@ describe('Testando serviço principal', () => {
   test('Caracterização da capacidade', () => {
   
     const result = nivelg({
-      p: 0.8,
-      c: 100000,
-      e: 1,
-      d: 0,
-      ameaca: 0.3,
-      seguranca: 0.95,
-      mt: 10,
-      fa: 2,
-      fc: 2,
-      fd: 2,
       gpr1: 'Excelente',
       gpr5: 'Regular',
       gpr6: 'Bom',
@@ -27,13 +17,13 @@ describe('Testando serviço principal', () => {
     });
 
     expect(result).resolves.toStrictEqual({
-      re: 0,
-      smi: 0,
-      integridade: 1,
-      dre: 1,
-      req: 'Bom',
+      req: 'Regular',
       gpr: 'Bom',
-      capacity: 'A capacidade do seu processo atende o nível G.'
+      capacity: {
+        i: 'O processo produz os resultados definidos.',
+        ii: 'A execução do processo é planejada e monitorada.',
+        iii: 'As pessoas estão preparadas para executar suas responsabilidades no processo.'
+      }
     });
   });
 });
