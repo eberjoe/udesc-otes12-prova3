@@ -33,7 +33,9 @@ Biblioteca que fornece suporte a OpenAPI 3 para Node.js.
 
 *Framework* para testes em JavaScript.
 
-## Escala utilizada para caracterização do resultado esperado do processo
+## Critérios
+
+### Escala utilizada para caracterização dos indicadores
 
 |Grau de implementação|Caracterização|
 |-|-|
@@ -42,6 +44,15 @@ Biblioteca que fornece suporte a OpenAPI 3 para Node.js.
 |2|Regular|
 |1|Insuficiente|
 |0|Ausente|
+
+### Determinação da capacidade
+
+|GPR|REQ|O processo produz resultados definidos|A execução do processo é planejada e monitorada|As pessoas estão preparadas para executar suas responsabilidades no processo|
+|-|-|-|-|-|
+|menor que Regular (<2)|menor que regular (<2)|Não|Não|Não|
+|menor que Regular (<2)|Regular ou melhor (>=2)|Sim|Não|Não|
+|Regular ou melhor (>=2)|menor que Regular (<2)|Não|Sim|Não|
+|Regular ou melhor (>=2)|Regular ou melhor (>=2)|Sim|Sim|Sim|
 
 ## Requisitos e utilização
 
