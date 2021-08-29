@@ -66,7 +66,7 @@ Este microsserviço roda na porta `8002` e recebe as entradas referentes aos ind
 
 ### `/metricas`
 
-Este microserviço possui os *endpoints* necessários para calcular as seguintes métricas:
+Este microserviço roda na porta `8001` e possui os *endpoints* necessários para calcular as seguintes métricas:
 
 #### Integridade
 
@@ -101,10 +101,12 @@ Execute os seguintes passos:
 
 5. Execute o comando `npm install`.
 
-6. Execute o comando `node index.js`
+6. Execute o comando `node index.js`.
 
 7. Abra mais um terminal em `/indicadores`.
 
-8. Execute o comando `npm install`
+8. Execute o comando `npm install`.
 
-9. Execute o comando `node index.js`
+9. Execute o comando `node index.js`.
+
+10. Acesse as interfaces **Swagger** cujos links são disponibilizado em cada terminal para testar os *endpoints*.
