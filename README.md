@@ -8,7 +8,7 @@
 
 A arquitetura de microsserviços RESTful foi utilizada para a gestão dos serviços propostos. Estes serviços estão documentados segundo a [especificação **OpenAPI 3**](https://swagger.io/specification/), e são acessíveis através da [interface gráfica do **Swagger**](https://swagger.io/tools/swagger-ui/).
 
-O serviço principal `mpsbr` , que roda na porta `8000`, utiliza os serviços `metricas` e `indicadores`, que rodam nas portas `8001` e `8002`, respectivamente, para determinar a capacidade de processos.
+O serviço principal `mpsbr` , que roda na porta `8000`, depende dos serviços `metricas` e `indicadores`, que rodam nas portas `8001` e `8002`, respectivamente, para determinar a capacidade de processos.
 
 ## Tecnologias empregadas
 
@@ -37,11 +37,11 @@ Biblioteca que fornece suporte a OpenAPI 3 para Node.js.
 
 |Grau de implementação|Caracterização|
 |-|-|
-|Excelente|O indicador direto está presente, é julgado adequado e não possui pontos fracos|
-|Bom|O indicador direto está presente e é julgado adequado, porém possui pontos fracos|
-|Regular|O indicador direto está presente mas é julgado inadequado|
-|Insuficiente|O indicador direto está parcialmente presente|
-|Ausente|O indicador direto não está presente|
+|4|Excelente|
+|3|Bom|
+|2|Regular|
+|1|Insuficiente|
+|0|Ausente|
 
 ## Requisitos e utilização
 
@@ -53,6 +53,16 @@ Execute os seguintes passos:
 
 2. Execute o comando `npm install`.
 
-3. Abra um terminal em `/metricas`.
+3. Execute o comando `node index.js`
 
-4. Execute o comando `npm install`.
+4. Abra outro terminal em `/metricas`.
+
+5. Execute o comando `npm install`.
+
+6. Execute o comando `node index.js`
+
+7. Abra mais um terminal em `/indicadores`.
+
+8. Execute o comando `npm install`
+
+9. Execute o comando `node index.js`

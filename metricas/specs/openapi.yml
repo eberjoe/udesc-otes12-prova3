@@ -45,7 +45,7 @@ paths:
           description: Variáveis inválidas
           content: {}
       x-codegen-request-body-name: avaliacao
-      x-swagger-router-controller: Mtricas
+      x-swagger-router-controller: metricas
   /integridade:
     post:
       tags:
@@ -76,7 +76,7 @@ paths:
           description: Variáveis inválidas
           content: {}
       x-codegen-request-body-name: avaliacao
-      x-swagger-router-controller: Mtricas
+      x-swagger-router-controller: metricas
   /dre:
     post:
       tags:
@@ -109,7 +109,7 @@ paths:
           description: Variáveis inválidas
           content: {}
       x-codegen-request-body-name: avaliacao
-      x-swagger-router-controller: Mtricas
+      x-swagger-router-controller: metricas
   /re:
     post:
       tags:
@@ -139,7 +139,7 @@ paths:
           description: Variáveis inválidas
           content: {}
       x-codegen-request-body-name: avaliacao
-      x-swagger-router-controller: Mtricas
+      x-swagger-router-controller: metricas
 components:
   schemas:
     SMI:

@@ -1,13 +1,14 @@
-var utils = require('../utils/builder.js');
-var NivelG = require('../services/nivel-g');
+'use strict';
 
-module.exports.nivelg = function(req, res, next, body) {
-  NivelG.nivelg(body)
+var utils = require('../utils/builder.js');
+var REQ = require('../services/req');
+
+module.exports.avaliarREQ = function(req, res, next, body) {
+  REQ.avaliarREQ(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      console.log('Erro');
       utils.writeJson(res, response);
     });
 };

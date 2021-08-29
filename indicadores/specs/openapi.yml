@@ -1,0 +1,161 @@
+openapi: 3.0.1
+info:
+  title: Indicadores de processos nível G
+  description: "O MPS.BR, Melhoria do Processo de Software Brasileiro, é um programa\
+    \ da Softex com apoio do Ministério da Ciência, Tecnologia e Inovações e tem como\
+    \ objetivo melhorar a capacidade de desenvolvimento de software, serviços e as\
+    \ práticas de gestão de RH na indústria de TIC. O cálculo será baseado no [Guia\
+    \ de Avaliação do MPS.BR](https://www.softex.br/wp-content/uploads/2013/07/MPS.BR_Guia_de-Avaliacao_2013.pdf)"
+  version: 1.0.0
+externalDocs:
+  description: Descubra mais acerca do MPS.BR
+  url: https://softex.br/mpsbr/
+servers:
+- url: http://localhost:8002/indicadores/v1
+tags:
+- name: GPR
+  description: Gerência de Projetos
+- name: REQ
+  description: Engenharia de Requisitos
+paths:
+  /GPR:
+    post:
+      tags:
+      - GPR
+      summary: Avaliação 3
+      description: "O propósito do processo **Gerência de Projetos** é estabelecer\
+        \ e manter atualizados planos que definam as atividades, recursos, riscos,\
+        \ prazos e responsabilidades do projeto. Também é propósito deste processo\
+        \ prover informações sobre o andamento do projeto que permitam a realizaçã\
+        o de correções quando houver desvios significativos no desempenho do projeto\
+        \ incluindo análise de causa-raiz.\n\n • `GPR 1` (A partir do nível G): O\
+        \ escopo do trabalho para o projeto é estabelecido, mantido atualizado e utilizado.\n\
+        \n • `GPR 5` (A partir do nível G):  O orçamento e o cronograma do projeto,\
+        \ incluindo a definição de marcos, são estabelecidos e mantidos atualizados.\n\
+        \n • `GPR 6` (A partir do nível G): Os recursos humanos para o projeto sã\
+        o planejados considerando as habilidades e os conhecimentos necessários para\
+        \ executá-lo.\n\n • `GPR 8` (A partir do nível G): A estratégia de transiç\
+        ão para operação e suporte do produto, incluindo as tarefas e o cronograma,\
+        \ é planejada.\n\n • `GPR 9` (A partir do nível G): O envolvimento das partes\
+        \ interessadas no projeto é planejado.\n\n• `GPR 11` (A partir do nível G):  A viabilidade\
+         de atingir as metas do projeto é avaliada considerando restrições e recursos disponíveis.\
+          Se necessário, ajustes são realizados."
+      operationId: avaliarGPR
+      requestBody:
+        description: "Avaliação do GPR1, GPR5, GPR6, GPR8, GPR9 e GPR11"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GPR'
+        required: true
+      responses:
+        "200":
+          description: Nota geral calculada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nota'
+        "400":
+          description: Notas inválidas informadas
+          content: {}
+      x-codegen-request-body-name: avaliacao
+      x-swagger-router-controller: gpr
+  /REQ:
+    post:
+      tags:
+      - REQ
+      summary: Avaliação 3
+      description: "O propósito do processo **Engenharia de Requisitos** é definir,\
+        \ gerenciar e manter atualizados os requisitos das partes interessadas e do\
+        \ produto, garantindo que inconsistências entre os requisitos, os planos e\
+        \ os produtos de trabalho sejam identificadas e tratadas.\n\n • `REQ 1` (A\
+        \ partir do nível G): As necessidades, expectativas e restrições das partes\
+        \ interessadas, tanto em relação ao produto quanto a suas interfaces, são\
+        \ identificadas.\n\n • `REQ 5` (A partir do nível G):  O compromisso da equipe\
+        \ técnica com a implementação dos requisitos é obtido.\n\n • `REQ 6` (A partir\
+        \ do nível G): A rastreabilidade bidirecional entre requisitos, atividades\
+        \ e produtos de trabalho do projeto é estabelecida e mantida.\n\n • `REQ 7`\
+        \ (A partir do nível G): Os planos, atividades e produtos de trabalho relacionados\
+        \ são revisados visando identificar e tratar inconsistência em relação aos\
+        \ requisitos."
+      operationId: avaliarREQ
+      requestBody:
+        description: "Avaliação do REQ1, REQ5, REQ6 e REQ7"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/REQ'
+        required: true
+      responses:
+        "200":
+          description: Nota geral calculada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nota'
+        "400":
+          description: Notas inválidas informadas
+          content: {}
+      x-codegen-request-body-name: avaliacao
+      x-swagger-router-controller: req
+components:
+  schemas:
+    Nota:
+      type: string
+      description: "Indicadores"
+      enum:
+      - Excelente
+      - Bom
+      - Regular
+      - Insuficiente
+      - Ausente
+    REQ:
+      required:
+      - req1
+      - req5
+      - req6
+      - req7
+      type: object
+      properties:
+        req1:
+          $ref: '#/components/schemas/Nota'
+        req5:
+          $ref: '#/components/schemas/Nota'
+        req6:
+          $ref: '#/components/schemas/Nota'
+        req7:
+          $ref: '#/components/schemas/Nota'
+      example:
+        req1: "Bom"
+        req5: "Excelente"
+        req6: "Excelente"
+        req7: "Bom"
+    GPR:
+      required:
+      - gpr1
+      - gpr5
+      - gpr6
+      - gpr8
+      - gpr9
+      - gpr11
+      type: object
+      properties:
+        gpr1:
+          $ref: '#/components/schemas/Nota'
+        gpr5:
+          $ref: '#/components/schemas/Nota'
+        gpr6:
+          $ref: '#/components/schemas/Nota'
+        gpr8:
+          $ref: '#/components/schemas/Nota'
+        gpr9:
+          $ref: '#/components/schemas/Nota'
+        gpr11:
+          $ref: '#/components/schemas/Nota'
+      example:
+        gpr1: "Insuficiente"
+        gpr5: "Excelente"
+        gpr6: "Bom"
+        gpr8: "Regular"
+        gpr9: "Excelente"
+        gpr11: "Bom"
